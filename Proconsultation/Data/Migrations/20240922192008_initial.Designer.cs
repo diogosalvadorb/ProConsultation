@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proconsultation.Data;
 
@@ -11,9 +12,11 @@ using Proconsultation.Data;
 namespace Proconsultation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240922192008_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -490,15 +493,15 @@ namespace Proconsultation.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "259cdea0-c8b1-4702-b8ff-abcab5644c7c",
+                            ConcurrencyStamp = "3b99aad1-5f5d-49f7-844e-0c996e0cf61d",
                             Email = "proconsulta@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "PROCONSULTA@MAIL.COM",
                             NormalizedUserName = "PROCONSULTA@MAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJQgybpBBQaUjq1jZGu3AwWomh28AfRZvsLogj7dJTp1p+MQJcDIV6mgEMkwgZSfqw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIQHwyrB06IdcaSuu+9EUMUh1eBrqSYdLNEnpLGOxXh/jtz/6wSSBaCjiOPncsmPKQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5bcad1ac-d411-4a40-b968-c92a1124675b",
+                            SecurityStamp = "681173fc-1760-4b42-a2b5-a49847637545",
                             TwoFactorEnabled = false,
                             UserName = "proconsulta@mail.com",
                             Nome = "Pro Consulta"

@@ -5,6 +5,10 @@ using MudBlazor.Services;
 using Proconsultation.Components;
 using Proconsultation.Components.Account;
 using Proconsultation.Data;
+using Proconsultation.Repositories.Agendamentos;
+using Proconsultation.Repositories.Especialidades;
+using Proconsultation.Repositories.Medicos;
+using Proconsultation.Repositories.Pacientes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +24,11 @@ builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
 
+builder.Services.AddScoped<IPacienteRepository, PacienteRespository>();
+builder.Services.AddScoped<IMedicoRespository, MedicoRespository>();
+builder.Services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
+builder.Services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -32,9 +41,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentityCore<ApplicationUser>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
+    .AddRoleManager<RoleManager<IdentityRole>>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
