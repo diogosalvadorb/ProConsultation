@@ -7,10 +7,10 @@ namespace Proconsultation.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
-        public DbSet<Especialidade> especialidades {  get; set; }
-        public DbSet<Medico> medicos { get; set; }
-        public DbSet<Paciente> paciente { get; set; }
-        public DbSet<Agendamento> agendamentos { get; set; }
+        public DbSet<Especialidade> Especialidades {  get; set; }
+        public DbSet<Medico> Medicos { get; set; }
+        public DbSet<Paciente> Paciente { get; set; }
+        public DbSet<Agendamento> Agendamentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

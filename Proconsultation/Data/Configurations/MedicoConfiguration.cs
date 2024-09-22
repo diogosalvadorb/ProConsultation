@@ -24,7 +24,7 @@ namespace Proconsultation.Data.Configurations
 
             builder.HasIndex(x => x.Documento).IsUnique();
 
-            builder.HasMany(a => a.Agendamentos).WithOne(m => m.Medico).HasForeignKey(m => m.Medico.Id).OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(a => a.Agendamentos).WithOne(m => m.Medico).HasForeignKey(m => m.MedicoId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
