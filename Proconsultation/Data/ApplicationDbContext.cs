@@ -9,7 +9,7 @@ namespace Proconsultation.Data
     {
         public DbSet<Especialidade> Especialidades {  get; set; }
         public DbSet<Medico> Medicos { get; set; }
-        public DbSet<Paciente> Paciente { get; set; }
+        public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
