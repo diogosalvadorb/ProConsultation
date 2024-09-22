@@ -9,7 +9,7 @@
         public DateTime DataCadastro { get; set; }
         public string Celular { get; set; } = string.Empty;
         public int EspecialidadeId { get; set; }
-        public Especialidade Espedcialidade { get; set; } = null!;
+        public Especialidade Especialidade { get; set; } = null!;
         public ICollection<Agendamento> Agendamentos { get; set; } = new List<Agendamento>();
     }
 }
