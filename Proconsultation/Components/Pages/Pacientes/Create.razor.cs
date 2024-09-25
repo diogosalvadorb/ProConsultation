@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using Proconsultation.Models;
 using Proconsultation.Repositories.Pacientes;
+using Proconsultation.Extensions;
 
 namespace Proconsultation.Components.Pages.Pacientes
 {
@@ -35,8 +36,8 @@ namespace Proconsultation.Components.Pages.Pacientes
                         Nome = model.Nome,
                         DataNascimento = DataNascimento.Value,
                         Email = model.Email,
-                        Celular = model.Celular,
-                        Documento = model.Documento,
+                        Celular = model.Celular.SomenteCaracteres(),
+                        Documento = model.Documento.SomenteCaracteres(),
                     };
 
                     await respository.AddAsync(paciente);
