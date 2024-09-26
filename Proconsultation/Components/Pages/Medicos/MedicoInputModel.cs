@@ -13,7 +13,7 @@ namespace Proconsultation.Components.Pages.Medicos
         public string Documento { get; set; } = null!;
 
         [Required(ErrorMessage = "{0} deve ser fornecido")]
-        public string CRM { get; set; } = null!;
+        public string Crm { get; set; } = null!;
 
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 

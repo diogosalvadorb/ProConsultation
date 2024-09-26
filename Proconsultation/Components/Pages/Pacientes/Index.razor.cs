@@ -9,7 +9,7 @@ namespace Proconsultation.Components.Pages.Pacientes
     public class IndexPage : ComponentBase
     {
         [Inject]
-        public IPacienteRepository repository { get; set; } = null!;
+        public IPacienteRepository Repository { get; set; } = null!;
 
         [Inject]
         public IDialogService Dialog {  get; set; } = null!;
@@ -36,7 +36,7 @@ namespace Proconsultation.Components.Pages.Pacientes
 
                 if(result is true)
                 {
-                    await repository.DeleteByIdAsync(paciente.Id);
+                    await Repository.DeleteByIdAsync(paciente.Id);
                     Snackbar.Add($"Paciente {paciente.Nome} excluído com sucesso!", Severity.Success);
                     await OnInitializedAsync();
                 }
@@ -54,7 +54,7 @@ namespace Proconsultation.Components.Pages.Pacientes
 
         protected override async Task OnInitializedAsync()
         {
-            Pacientes = await repository.GetAllAsync();
+            Pacientes = await Repository.GetAllAsync();
         }
     }
 }

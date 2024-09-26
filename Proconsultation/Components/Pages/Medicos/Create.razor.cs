@@ -11,7 +11,7 @@ namespace Proconsultation.Components.Pages.Medicos
     public class CreateMedico : ComponentBase
     {
         [Inject]
-        public IEspecialidadeRepository EspecialidadeRespository { get; set; } = null!;
+        private IEspecialidadeRepository EspecialidadeRespository { get; set; } = null!;
 
         [Inject]
         public IMedicoRespository Respository { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Proconsultation.Components.Pages.Medicos
                         Nome = model.Nome,
                         Documento = model.Documento.SomenteCaracteres(),
                         Celular = model.Celular.SomenteCaracteres(),
-                        Crm = model.CRM,
+                        Crm = model.Crm.SomenteCaracteres(),
                         EspecialidadeId = model.EspecialidadeId,
                         DataCadastro = model.DataCadastro,
                     };
@@ -53,7 +53,7 @@ namespace Proconsultation.Components.Pages.Medicos
             }
         }
 
-        protected override async void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
             Especialidades = await EspecialidadeRespository.GetAllAsync();
         }

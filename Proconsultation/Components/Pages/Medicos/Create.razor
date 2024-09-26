@@ -22,9 +22,9 @@
         <MudTextField Label="CRM"
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatorio"
-                      @bind-Value="InputModel.CRM"
+                      @bind-Value="InputModel.Crm"
                       Mask="@(new PatternMask("aa-000000"))"
-                      For="@(()=> InputModel.CRM)" />
+                      For="@(()=> InputModel.Crm)" />
 
         <MudTextField Label="Celular"
                       Variant="Variant.Outlined"
@@ -34,7 +34,6 @@
                       For="@(()=> InputModel.Celular)" />
 
         <MudSelect Label="Especialidade"
-                   Text=""
                    @bind-Value="InputModel.EspecialidadeId"
                    Variant="Variant.Outlined"
                    AnchorOrigin="Origin.BottomCenter"
