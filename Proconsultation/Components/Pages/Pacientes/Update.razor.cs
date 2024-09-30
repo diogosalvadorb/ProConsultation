@@ -13,7 +13,7 @@ namespace Proconsultation.Components.Pages.Pacientes
         public int PacienteId { get; set; }
 
         [Inject]
-        public IPacienteRepository respository { get; set; } = null!;
+        public IPacienteRepository Respository { get; set; } = null!;
 
         [Inject]
         public ISnackbar Snackbar { get; set; } = null!;
@@ -29,7 +29,7 @@ namespace Proconsultation.Components.Pages.Pacientes
 
         protected override async Task OnInitializedAsync()
         {
-            CurrentPaciente = await respository.GetByIdAsync(PacienteId);
+            CurrentPaciente = await Respository.GetByIdAsync(PacienteId);
 
             if (CurrentPaciente is null)
                 return;
@@ -59,7 +59,7 @@ namespace Proconsultation.Components.Pages.Pacientes
                     CurrentPaciente.Email = model.Email;
                     CurrentPaciente.DataNascimento = DataNascimento.Value;
 
-                    await respository.UpdateAsync(CurrentPaciente);
+                    await Respository.UpdateAsync(CurrentPaciente);
 
                     Snackbar.Add("Paciente actualizado com sucesso", Severity.Success);
                     NavigationManager.NavigateTo("/pacientes");

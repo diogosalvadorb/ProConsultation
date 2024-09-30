@@ -31,13 +31,14 @@
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatorio"
                       @bind-Value="InputModel.Celular"
-                      Mask="@(new PatternMask("(00) 0 0000-0000"))"
+                      Mask="@(new PatternMask("(00) 00000-0000"))"
                       For="@(()=> InputModel.Celular)" />
 
         <MudDatePicker Label="Data de Nascimento"
                     Editable="false"
                     @bind-Date="DataNascimento"
                     Variant="Variant.Outlined"
+                    MaxDate="@MaxDate"
                     Placeholder="Data de nascimento"/>
 
         <MudDivider Class="m-4" />

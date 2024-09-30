@@ -10,7 +10,7 @@ namespace Proconsultation.Components.Pages.Pacientes
     public class CreatePacientePage : ComponentBase
     {
         [Inject]
-        public IPacienteRepository respository { get; set; } = null!;
+        public IPacienteRepository Respository { get; set; } = null!;
 
         [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
@@ -40,7 +40,7 @@ namespace Proconsultation.Components.Pages.Pacientes
                         Documento = model.Documento.SomenteCaracteres(),
                     };
 
-                    await respository.AddAsync(paciente);
+                    await Respository.AddAsync(paciente);
                     Snackbar.Add("Paciente adicionado com sucesso", Severity.Success);
                     NavigationManager.NavigateTo("/pacientes");
                 }

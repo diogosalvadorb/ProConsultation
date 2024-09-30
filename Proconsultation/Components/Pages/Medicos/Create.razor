@@ -1,13 +1,11 @@
-﻿@page "/pacientes/update/{PacienteId:int}"
-@inherits UpdatePaciente
+﻿@page "/medicos/create"
+@inherits CreateMedico
 
-<MudText Typo="Typo.h3">Atualizar Paciente</MudText>
-
+<MudText Typo="Typo.h3">Cadastro de Médico</MudText>
 <MudPaper Class="pa-8 mt-4">
 
     <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
         <DataAnnotationsValidator />
-
         <MudTextField Label="Nome"
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatorio"
@@ -21,11 +19,12 @@
                       Mask="@(new PatternMask("000.000.000-00"))"
                       For="@(()=> InputModel.Documento)" />
 
-        <MudTextField Label="Email"
+        <MudTextField Label="CRM"
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatorio"
-                      @bind-Value="InputModel.Email"
-                      For="@(()=> InputModel.Email)" />
+                      @bind-Value="InputModel.Crm"
+                      Mask="@(new PatternMask("aa-000000"))"
+                      For="@(()=> InputModel.Crm)" />
 
         <MudTextField Label="Celular"
                       Variant="Variant.Outlined"
@@ -34,12 +33,18 @@
                       Mask="@(new PatternMask("(00) 00000-0000"))"
                       For="@(()=> InputModel.Celular)" />
 
-        <MudDatePicker Label="Data de Nascimento"
-                       Editable="false"
-                       @bind-Date="DataNascimento"
-                       Variant="Variant.Outlined"
-                       MaxDate="@MaxDate"
-                       Placeholder="Data de nascimento" />
+        <MudSelect Label="Especialidade"
+                   @bind-Value="InputModel.EspecialidadeId"
+                   Variant="Variant.Outlined"
+                   AnchorOrigin="Origin.BottomCenter"
+                   For="@(()=> InputModel.EspecialidadeId)">
+
+            @foreach (var especialidade in Especialidades)
+            {
+                <MudSelectItem Value="@especialidade.Id">@especialidade.Nome</MudSelectItem>
+            }
+
+        </MudSelect>
 
         <MudDivider Class="m-4" />
 
@@ -49,5 +54,5 @@
                    Size="Size.Large"
                    ButtonType="ButtonType.Submit">Salvar</MudButton>
     </EditForm>
-
+    
 </MudPaper>

@@ -16,7 +16,7 @@ namespace Proconsultation.Repositories.Medicos
         {
             try
             {
-                await _context.Medicos.AddAsync(medico);
+                _context.Medicos.Add(medico);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
