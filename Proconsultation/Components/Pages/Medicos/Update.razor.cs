@@ -14,10 +14,10 @@ namespace Proconsultation.Components.Pages.Medicos
         public int MedicoId { get; set; }
 
         [Inject]
-        public IEspecialidadeRepository especialidadeRespository { get; set; } = null!;
+        public IEspecialidadeRepository EspecialidadeRespository { get; set; } = null!;
 
         [Inject]
-        public IMedicoRespository respository { get; set; } = null!;
+        public IMedicoRespository Respository { get; set; } = null!;
 
         [Inject]
         public ISnackbar Snackbar { get; set; } = null!;
@@ -33,8 +33,8 @@ namespace Proconsultation.Components.Pages.Medicos
 
         protected override async Task OnInitializedAsync()
         {
-            CurrentMedico = await respository.GetByIdAsync(MedicoId);
-            Especialidades = await especialidadeRespository.GetAllAsync();
+            CurrentMedico = await Respository.GetByIdAsync(MedicoId);
+            Especialidades = await EspecialidadeRespository.GetAllAsync();
 
             if (CurrentMedico is null)
                 return;
@@ -53,6 +53,8 @@ namespace Proconsultation.Components.Pages.Medicos
         {
             try
             {
+                if(CurrentMedico is null) return;
+
                 if (editContext.Model is MedicoInputModel model)
                 {
                     CurrentMedico.Id = model.Id;
@@ -62,7 +64,7 @@ namespace Proconsultation.Components.Pages.Medicos
                     CurrentMedico.Celular = model.Celular.SomenteCaracteres();
                     CurrentMedico.EspecialidadeId = model.EspecialidadeId;
 
-                    await respository.UpdateAsync(CurrentMedico);
+                    await Respository.UpdateAsync(CurrentMedico);
 
                     Snackbar.Add("Medico atualizado com sucesso", Severity.Success);
                     NavigationManager.NavigateTo("/medicos");
@@ -73,6 +75,5 @@ namespace Proconsultation.Components.Pages.Medicos
                 Snackbar.Add(ex.Message, Severity.Error);
             }
         }
-
     }
 }
