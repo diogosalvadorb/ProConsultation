@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation
 
 <MudThemeProvider IsDarkMode="_isDark" />
 <MudPopoverProvider />
@@ -21,6 +22,11 @@
             {
                 <MudIconButton @onclick="ThemeToogle" Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit" />
             }
+
+            <AuthorizeView>
+                <MudIconButton Icon="@Icons.Material.Filled.ExitToApp" @onclick="LogOff" Color="Color.Inherit" />
+            </AuthorizeView>
+
         </MudStack>
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
@@ -53,6 +59,9 @@
     {
         _isDark = !_isDark;
     }
+
+    private void LogOff()
+    {
+        Navigation.NavigateTo("/Account/Manage/logout");
+    }
 }
-
-
