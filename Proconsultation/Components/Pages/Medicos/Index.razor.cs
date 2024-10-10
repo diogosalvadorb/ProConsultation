@@ -23,7 +23,7 @@ namespace Proconsultation.Components.Pages.Medicos
 
         public bool HideButtons { get; set; }
         [CascadingParameter]
-        private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+        private Task<AuthenticationState> AuthenticationState { get; set; }
 
         public async Task DeleteMedicoAsync(Medico medico)
         {
@@ -57,6 +57,10 @@ namespace Proconsultation.Components.Pages.Medicos
 
         protected override async Task OnInitializedAsync()
         {
+            var auth = await AuthenticationState;
+
+            HideButtons = !auth.User.IsInRole("Atendente");
+
             Medicos = await Respository.GetAllAsync();
         }
     }

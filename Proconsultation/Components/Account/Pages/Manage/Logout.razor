@@ -1,0 +1,14 @@
+﻿@page "/Account/Manage/logout"
+@using Microsoft.AspNetCore.Identity
+@using Proconsultation.Data
+
+@inject NavigationManager Navigation
+@inject SignInManager<ApplicationUser> SignInManager
+
+@code {
+    protected async override Task OnInitializedAsync()
+    {
+        await SignInManager.SignOutAsync();
+        Navigation.NavigateTo("/");
+    }
+}
