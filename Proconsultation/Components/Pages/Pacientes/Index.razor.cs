@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
 using Proconsultation.Models;
 using Proconsultation.Repositories.Pacientes;
@@ -21,6 +22,10 @@ namespace Proconsultation.Components.Pages.Pacientes
         public NavigationManager NavigationManager { get; set; } = null!;
 
         public List<Paciente> Pacientes { get; set; }  = new List<Paciente>();
+
+        public bool HideButtons { get; set; }
+        [CascadingParameter]
+        private Task<AuthenticationState> AuthenticationState { get; set; }
 
         public async Task DeletePaciente(Paciente paciente)
         {
@@ -54,6 +59,10 @@ namespace Proconsultation.Components.Pages.Pacientes
 
         protected override async Task OnInitializedAsync()
         {
+            var auth = await AuthenticationState;
+
+            HideButtons = !auth.User.IsInRole("Atendente");
+
             Pacientes = await Repository.GetAllAsync();
         }
     }
