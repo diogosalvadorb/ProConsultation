@@ -20,6 +20,7 @@ Antes de começar, você precisará das seguintes ferramentas instaladas:
 ```bash
 # clonar repositório
 git clone https://github.com/diogosalvadorb/ProConsultation.git
+cd Proconsultation
 
 # configure sua conexão 
 editar sua conexao no appsettings.json
@@ -38,3 +39,6 @@ dotnet run
 ```
 
 # Interface do projeto
+![Dashboard](https://github.com/diogosalvadorb/ProConsultation/blob/main/Proconsultation/Imagens/Home.png)
+![Agendamento](https://github.com/diogosalvadorb/ProConsultation/blob/main/Proconsultation/Imagens/Agendamento.png)
+![Medicos](https://github.com/diogosalvadorb/ProConsultation/blob/main/Proconsultation/Imagens/Medicos.png)
